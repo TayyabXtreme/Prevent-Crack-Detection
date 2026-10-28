@@ -2,7 +2,13 @@
 
 Deep learning system that classifies photos of road and concrete surfaces as **cracked** or **clear**. Two models, a **CNN** and a **Vision Transformer (ViT)**, were trained from scratch on 30,000 images and compared. The winning CNN (**98.27% test accuracy**) is served through an interactive **Streamlit** web app.
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://pavement-crack-detection.streamlit.app/)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/15neVKUK5pRW2Jf3wApN3skVxvVIBBprz?usp=sharing)
+
+🚀 **Live demo:** https://pavement-crack-detection.streamlit.app/
 📓 **Training notebook (Google Colab):** [Open in Colab](https://colab.research.google.com/drive/15neVKUK5pRW2Jf3wApN3skVxvVIBBprz?usp=sharing)
+
+> The live app may take about 30 seconds to wake up if nobody has used it recently (free Streamlit Cloud tier).
 
 ![Demo gallery](images/demo_gallery.png)
 
@@ -67,6 +73,8 @@ streamlit run app.py
 Open http://localhost:8501. On macOS or Linux, activate with `source venv/bin/activate`. Python 3.11 or 3.12 is required (TensorFlow 2.19 does not support 3.13 yet).
 
 ## Deploy on Streamlit Community Cloud (free)
+The app is deployed at **https://pavement-crack-detection.streamlit.app/**, and every `git push` to `main` redeploys it automatically. To deploy your own copy:
+
 1. Sign in at **https://share.streamlit.io** with the GitHub account that owns this repo.
 2. Click **Create app**, then **Deploy a public app from GitHub**.
 3. Fill in:
@@ -74,7 +82,7 @@ Open http://localhost:8501. On macOS or Linux, activate with `source venv/bin/ac
    - **Branch:** `main`
    - **Main file path:** `app.py`
    - **App URL:** pick a name, e.g. `pavement-crack-detection`
-4. Open **Advanced settings** and set **Python version: 3.12**. This is required for TensorFlow.
+4. Open **Advanced settings** and set **Python version: 3.12** *before* deploying. The default (3.14) fails with `tensorflow-cpu==2.19.0 has no wheels ... (cp314)` because TensorFlow has no stable release for Python 3.13+ yet. The Python version can't be changed after deployment, so if you get this error, delete the app and deploy it again with 3.12.
 5. Click **Deploy**. The first build takes about 3 to 5 minutes while TensorFlow installs. After that, every `git push` redeploys automatically.
 
 ## Alternative: Docker (Hugging Face Spaces, Render, any server)
