@@ -45,7 +45,7 @@ with st.sidebar:
                           help="An image is flagged as cracked when P(crack) is at or above this value. "
                                "Lower it to catch more cracks, at the cost of more false alarms.")
     st.divider()
-    st.caption("PAI Lab · CNN vs Vision Transformer")
+    st.caption("ANN Lab · CNN vs Vision Transformer")
 
 # ---------- Header ----------
 st.title("Pavement Crack Inspection")
